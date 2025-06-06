@@ -12,18 +12,20 @@ find_package(mavros_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(trajectory_tracking_node
+add_executable(trajectory_tracking_velocity_node
   src/trajectory_tracking_velocity_controlled.cpp)
-target_include_directories(trajectory_tracking_node
+target_include_directories(trajectory_tracking_velocity_node
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>)
-ament_target_dependencies(trajectory_tracking_node
+ament_target_dependencies(trajectory_tracking_velocity_node
   rclcpp
   mavros_msgs
   tf2
@@ -31,6 +33,55 @@ ament_target_dependencies(trajectory_tracking_node
   nav_msgs
   )  
 
+add_executable(trajectory_tracking_attitude_node
+  src/trajectory_tracking_attitude_controlled.cpp)
+target_link_libraries(trajectory_tracking_attitude_node Eigen3::Eigen)
+target_include_directories(trajectory_tracking_attitude_node
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
+ament_target_dependencies(trajectory_tracking_attitude_node
+  rclcpp
+  mavros_msgs
+  tf2
+  geometry_msgs
+  nav_msgs
+  visualization_msgs
+  Eigen3
+  )  
+
+add_executable(waypoint_navigation_node
+  src/waypoint_navigation.cpp)
+target_include_directories(waypoint_navigation_node
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
+ament_target_dependencies(waypoint_navigation_node
+  rclcpp
+  mavros_msgs
+  tf2
+  geometry_msgs
+  nav_msgs
+  visualization_msgs
+  )  
+
+
+add_executable(waypoint_navigation_attitude_control_node
+  src/waypoint_navigation_attitude_controlled.cpp)
+target_link_libraries(waypoint_navigation_attitude_control_node Eigen3::Eigen)
+target_include_directories(waypoint_navigation_attitude_control_node
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
+ament_target_dependencies(waypoint_navigation_attitude_control_node
+  rclcpp
+  mavros_msgs
+  tf2
+  geometry_msgs
+  nav_msgs
+  visualization_msgs
+  Eigen3
+  )  
 # Install launch files
 install(
   DIRECTORY launch
@@ -38,7 +89,7 @@ install(
 )
 
 install(
-  TARGETS trajectory_tracking_node
+  TARGETS trajectory_tracking_velocity_node trajectory_tracking_attitude_node waypoint_navigation_node waypoint_navigation_attitude_control_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
