@@ -185,15 +185,21 @@ ros2 param set /spiral_attitude_controller trajectory.period 120.0
 1. Before running the simulation, ensure the drone is armed and switched to GUIDED mode:
 ```bash
 # In the ArduPilot SITL terminal
-arm throttle
 mode guided
+arm throttle
 ```
 
-2. The trajectory parameters (radius, height, pitch) can be adjusted in the source code.
+2. If you experience issues with arming the drone due to low simulation loop frequency, you can disable arming checks:
+```bash
+# In the ArduPilot SITL terminal
+param set ARMING_CHECK 0
+```
 
-3. Make sure all coordinate frames are properly set up in RViz2 for visualization.
+3. The trajectory parameters (radius, height, pitch) can be adjusted in the source code.
 
-4. The controller gains may need tuning based on your specific simulation setup.
+4. Make sure all coordinate frames are properly set up in RViz2 for visualization.
+
+5. The controller gains may need tuning based on your specific simulation setup.
 
 ## References & Documentation
 
