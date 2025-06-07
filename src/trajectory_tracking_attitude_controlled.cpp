@@ -223,6 +223,7 @@ private:
         Eigen::Vector3d pos_des = compute_desired_position(t);
         Eigen::Vector3d vel_des = compute_desired_velocity(t);
         Eigen::Vector3d acc_ff = compute_desired_acceleration(t);  // Feed-forward term
+        target_ = pos_des;  // Update target position
 
         // Current position and velocity
         Eigen::Vector3d pos(
