@@ -205,9 +205,8 @@ param set ARMING_CHECK 0
 
 ### Official Documentation
 - [ArduPilot SITL Documentation](https://ardupilot.org/dev/docs/sitl-simulator-software-in-the-loop.html)
-- [ArduPilot Gazebo Plugin](https://ardupilot.org/dev/docs/using-gazebo-simulator-with-sitl.html)
+- [ArduPilot Gazebo Plugin](https://ardupilot.org/dev/docs/sitl-with-gazebo-legacy.html#sitl-with-gazebo-legacy)
 - [ROS 2 Humble Installation](https://docs.ros.org/en/humble/Installation.html)
-- [MAVROS Package](http://wiki.ros.org/mavros)
 - [Gazebo Classic](https://classic.gazebosim.org/)
 
 ### Additional Resources
