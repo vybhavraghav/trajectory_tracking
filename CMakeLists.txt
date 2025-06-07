@@ -82,11 +82,7 @@ ament_target_dependencies(waypoint_navigation_attitude_control_node
   visualization_msgs
   Eigen3
   )  
-# Install launch files
-install(
-  DIRECTORY launch
-  DESTINATION share/${PROJECT_NAME}/
-)
+
 
 install(
   TARGETS trajectory_tracking_velocity_node trajectory_tracking_attitude_node waypoint_navigation_node waypoint_navigation_attitude_control_node

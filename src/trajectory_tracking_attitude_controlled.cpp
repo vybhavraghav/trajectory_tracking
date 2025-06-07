@@ -22,7 +22,7 @@ public:
         this->declare_parameter("pid.pos.d", 3.0);  // Increased from 2.0
         this->declare_parameter("pid.max_integral", 1.0);
         this->declare_parameter("max_tilt_angle", 0.4);
-        this->declare_parameter("trajectory.period", 120.0);  // Increased from 60.0 for slower motion
+        this->declare_parameter("trajectory.period", 60.0);  // Increased from 60.0 for slower motion
         
         // Get parameter values
         mass_ = this->get_parameter("mass").as_double();
@@ -36,11 +36,11 @@ public:
         g_ = 9.81;
 
         // Spiral parameters
-        spiral_radius_ = 2.0;      // meters
+        spiral_radius_ = 1.0;      // meters
         spiral_omega_ = 0.4;       // rad/waypoint
         spiral_z0_ = 5.0;          // center height (set to 5 meters)
         spiral_x0_ = 0.0;          // starting x
-        spiral_pitch_ = 0.2;       // spiral pitch (distance between loops along x)
+        spiral_pitch_ = 0.1;       // spiral pitch (distance between loops along x)
         num_waypoints_ = 100;       // number of waypoints in the spiral
 
 
